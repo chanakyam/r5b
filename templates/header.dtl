@@ -1,0 +1,25 @@
+<header>
+    <!-- <div class="TopRight"> 
+      <form class="searchform">
+        <input type="text" name="search" class="search-box" />
+        <input type="submit" value="" name="" class="searchbutton">
+      </form>
+    </div> -->
+    <!-- TopRight end --> 
+    <span class="clear"></span>
+    <nav> <a href="/" title="Sports News" class="logo"><img src="/images/r5b-logo.png" alt=""></a>
+      <div class="menu"> <span>MENU</span>
+       
+        <ul class="Navigation">
+           <li> <a href="/" title="Home">Home</a> </li>
+           <li><a href="/moresportsnews?c=text_us_sports&p=1" title="Sports">Sports</a></li>
+           <li><a href="/moresportsnews?c=text_us_nba&p=1" title="NBA">NBA</a></li>
+          <li> <a href="/moresportsnews?c=text_us_nfl&p=1" title="NFL">NFL</a> </li>
+          <li><a href="/moresportsnews?c=text_us_nhl&p=1" title="NHL">NHL</a></li>
+          <li><a href="/morevideos?p=1" title="More Videos">More Videos</a></li>
+        </ul>
+      </div>
+      <!-- menu end --> 
+      <span class="clear"></span> </nav>
+    <span class="clear"></span> 
+</header>

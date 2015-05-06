@@ -1,0 +1,418 @@
+{% if params|first|length >1 %}
+  this is a list
+{% else %}
+  this is not a list {{ params|first }}
+{% endif %}
+<!DOCTYPE html>
+<html ng-app="r5bApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Sports News</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/css/style.css" rel="stylesheet" type="text/css" />
+<script language="javascript" src="js/html5.js"></script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/controllers.js"></script>
+    <script src="/js/slides.min.jquery.js"></script>
+    <script src="/js/ui-bootstrap-tpls-0.6.0.js"></script>
+    <style>
+      /* 
+  Resets defualt browser settings
+  reset.css
+*/
+
+
+
+#frame {
+  position:absolute;
+  z-index:0;
+  width:739px;
+  height:341px;
+  top:-3px;
+  left:-80px;
+}
+
+/*
+  Slideshow
+*/
+
+#slides {
+  top:15px;
+  left:4px;
+  z-index:100;
+}
+
+/*
+  Slides container
+  Important:
+  Set the width of your slides container
+  Set to display none, prevents content flash
+*/
+
+.slides_container {
+  width:648px;
+  overflow:hidden;
+  position:relative;
+  display:none;
+}
+
+/*
+  Each slide
+  Important:
+  Set the width of your slides
+  If height not specified height will be set by the slide content
+  Set to display block
+*/
+
+.slides_container div.slide {
+  width:570px;
+  height:370px;
+  display:block;
+}
+
+
+/*
+  Next/prev buttons
+*/
+
+#slides .next,#slides .prev {
+  position:absolute;
+  top:107px;
+  left:-39px;
+  width:24px;
+  height:43px;
+  display:block;
+  z-index:101;
+}
+
+#slides .next {
+  left:585px;
+}
+
+/*
+  Pagination
+*/
+
+.pagination {
+  margin:26px auto 0;
+  width:100px;
+}
+
+.pagination li {
+  float:left;
+  margin:0 1px;
+  list-style:none;
+}
+
+.pagination li a {
+  display:block;
+  width:12px;
+  height:0;
+  padding-top:12px;
+  background-image:url(../img/pagination.png);
+  background-position:0 0;
+  float:left;
+  overflow:hidden;
+}
+
+.pagination li.current a {
+  background-position:0 -12px;
+}
+
+/*
+  Caption
+*/
+
+.caption {
+  z-index:500;
+  position:absolute;
+  bottom:-35px;
+  left:0;
+  height:auto;
+  padding:5px 20px 0 20px;
+  background:#000;
+  background:rgba(0,0,0,.5);
+  width:107%;
+  font-size:1em;
+  line-height:1.33;
+  color:#fff;
+  border-top:1px solid #000;
+  text-shadow:none;
+}
+
+    </style>
+    
+    <script>
+    $(function(){
+      $('#slides').slides({
+        preload: true,
+        preloadImage: 'img/loading.gif',
+        play: 2000,
+        pause: 2500,
+        hoverPause: true,
+        pagination: {
+          active: true
+        },
+        animationStart: function(current){
+          $('.caption').animate({
+            bottom:-35
+          },100);
+        },
+        animationComplete: function(current){
+          $('.caption').animate({
+            bottom:0
+          },200);
+        },
+        slidesLoaded: function() {
+          $('.caption').animate({
+            bottom:0
+          },200);
+        }
+      });
+    });
+  </script>
+<script type='text/javascript' src='/js/jquery-1.7.1.min.js'></script>
+<script type="text/javascript" src="http://jwpsrv.com/library/5V3tOP97EeK2SxIxOUCPzg.js"></script>
+<script type="text/javascript">jwplayer.key="L0SAYMTJJs/IIkeci5tG4vgIMGHAc6YFBtmJaA==";</script></script>
+<script type='text/javascript' src='/js/jquery.mobile.customized.min.js'></script>
+<script type='text/javascript' src='/js/jquery.easing.1.3.js'></script>
+
+
+</head>
+<script type='text/javascript'>
+ $(document).ready(function() {
+ var vastURI = 'http://vast.optimatic.com/vast/getVast.aspx?id=th330713sh&zone=vpaidtag&pageURL=[INSERT_PAGE_URL]&pageTitle=[INSERT_PAGE_TITLE]&cb=[CACHE_BUSTER]';
+ function updateURL(vastURI){
+ // Generate a huge random number
+ var ord=Math.random(), protocol, host, port, path, pageUrl, updatedURI;
+ var parsedFragments = parseUri(vastURI);
+ ord = ord * 10000000000000000000;
+ // Protocol of VAST URI
+ protocol = parsedFragments.protocol;
+ // VAST URI hostname
+ host = parsedFragments.host;
+ // VAST URI Path
+ path = parsedFragments.path;
+ //VAST Page Url
+ pageUrl = parsedFragments.queryKey.pageUrl
+ var fragmentString ='';
+ //Updated URI
+ for(var key in parsedFragments.queryKey){//console.log("abhii");console.log();
+ // For Cache buster add a large random number
+ if(key == 'cb'){
+ fragmentString = fragmentString + key + '=' + ord + '&';
+ }
+ // for referring Page URL, get the current document URL and encode the URI
+ else if(key == 'pageURL'){
+ var currentUrl = document.URL;
+ //var currentUrl = "http://test.com";
+ fragmentString = fragmentString + key + '=' + currentUrl + '&';
+ }else if(key == 'pageTitle'){
+ //var currentTit = document.title;
+ //var currentUrl = "http://test.com";
+ var page_title=document.title;
+ fragmentString = fragmentString + key + '=' + page_title + '&';
+ }
+ else{
+ fragmentString = fragmentString + key + '=' + parsedFragments.queryKey[key] + '&';
+ }
+
+ }
+ updatedURI = protocol + '://' + host + path + '?' + fragmentString ;
+
+ // Remove the trailing & and return the updated URL
+ return updatedURI.slice(0,-1);
+ //return encodeURI(updatedURI.slice(0,-1));
+
+ }
+
+ // Parse URI to get qeury string like cb for cache buster and pageurl
+ function parseUri (str) {
+ var o = parseUri.options,
+ m = o.parser[o.strictMode ? "strict" : "loose"].exec(str),
+ uri = {},
+ i = 14;
+
+ while (i--) uri[o.key[i]] = m[i] || "";
+
+ uri[o.q.name] = {};
+ uri[o.key[12]].replace(o.q.parser, function ($0, $1, $2) {
+ if ($1) uri[o.q.name][$1] = $2;
+ });
+
+ return uri;
+ };
+
+ parseUri.options = {
+ strictMode: false,
+ key: ["source","protocol","authority","userInfo","user","password","host","port","relative","path","directory","file","query","anchor"],
+ q: {
+ name: "queryKey",
+ parser: /(?:^|&)([^&=]*)=?([^&]*)/g
+ },
+ parser: {
+ strict: /^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,
+ loose: /^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/
+ }
+ };
+ // end of code for generating cb,pagetit,pageurl
+ jwplayer('myElement').setup({
+ "flashplayer": "http://player.longtailvideo.com/player.swf",
+ "playlist": [
+ {
+ "file": "http://video.contentapi.ws/{{videoParam.video}}"
+ }
+ ],
+ "width": '100%',
+ "height": 500,
+ stretching: "exactfit",
+ autostart: true,
+ "controlbar": {
+ "position": "bottom"
+ },
+ "plugins": {
+ "ova-jw": {
+ "ads": {
+ "companions": {
+ "regions": [
+ {
+ "id": "companion",
+ "width": 80,
+ "height": 300
+ }
+ ]
+ },
+ "schedule": [
+ {
+ "position": "pre-roll",
+ //"tag": "http://vast.optimatic.com/vast/getVast.aspx?id=s93akgl0y&zone=vpaidtag&pageURL=[INSERT_PAGE_URL]&pageTitle=[INSERT_PAGE_TITLE]&cb=[CACHE_BUSTER]"
+  "tag": updateURL(vastURI)
+ }
+ ]
+ },
+ "debug": {
+ "levels": "none"
+ }
+ }
+ }
+ });
+ });
+ </script>
+
+<body ng-controller="R5bHome" ng-cloak>
+<div class="container">
+  <header>
+    <div class="TopRight"> <!--<span><a href="#" title="login">login</a></span> <span>|</span> <span><a href="#" title="Register">Register</a></span>-->
+      <form class="searchform">
+        <input type="text" name="search" class="search-box" />
+        <input type="submit" value="" name="" class="searchbutton">
+      </form>
+    </div>
+    <!-- TopRight end --> 
+    <span class="clear"></span>
+    <nav> <a href="/" title="Sports News" class="logo"><img src="/images/logo.png" alt=""></a>
+      <div class="menu"> <span>MENU</span>
+       
+        <ul class="Navigation">
+           <li> <a href="/" title="Home">Home</a> </li>
+          <!--<li> <a href="#" title="NFL">NFL</a> </li>
+          <li><a href="#" title="MLB">MLB</a></li>
+          <li><a href="#" title="UFC">UFC</a></li>
+          <li><a href="#" title="SOCCER">SOCCER</a></li>
+          <li><a href="#" title="NASCAR">NASCAR</a></li>
+          <li><a href="#" title="NBA">NBA</a></li>
+          <li><a href="#" title="NHL">NHL</a></li>
+          <li><a href="#" title="GOLF">GOLF</a></li>
+          <li><a href="#" title="NCAAB">NCAAB</a></li>-->
+        </ul>
+      </div>
+      <!-- menu end --> 
+      <span class="clear"></span> </nav>
+    <span class="clear"></span> </header>
+  <div class="ad1"><img src="/images/ad1.jpg" width="727" height="90" alt=""></div>
+  <!-- ad1 end  -->
+
+ <div class="R5bHome">
+ <div class="module video-stream">
+ <div class="video-title"><h2 class="videotitle">{{videoParam.title}}. <span style="color:#FF9900;"> - {{videoParam.upload_date}}</span></h2> </div>
+ <div id="myElement">Loading the player...</div>
+ </div><!-- video module end -->
+</div>
+  
+  <section class="contentarea">
+    <aside class="leftcontent">
+      <!-- LatestNews end -->
+      <div class="margin20_T RecentNews">
+      
+        <div class="newsbody">
+
+  <div>
+      <div class="blue-title">Slideshow</div>
+      <div id="slides">
+        <div class="slides_container">
+          <div class="slide">
+            <img src="http://img1.contentapi.ws/{{ firstslide.view_image }}" width="670" height="570" alt="Slide 1"></a>
+            <div class="caption" style="bottom:0">
+              <p>{{ firstslide.title }}</p>
+            </div>
+          </div>
+          {% for img in params %}
+
+          <div class="slide">
+            <img src="http://img1.contentapi.ws/{{ img.value.view_image }}" width="670" height="570" alt="Slide 1"></a>
+            <div class="caption" style="bottom:0">
+              <p>{{ img.value.title }}</p>
+            </div>
+          </div>
+          {% endfor %}                   
+        </div>
+    </div>
+  </div>
+        
+        </div>
+        <!-- recent-news end --> 
+        
+      </div>
+      <!-- RecentNews end --> 
+    </aside>
+    <aside class="sidebar">
+      <div class="rightad"><img src="/images/right-ad.jpg" width="300" height="250" alt=""></div>
+      <div class="SportsPictures margin20_T">
+        <div class="blue-title"><span class="title-left-bg"></span>Sports News</div>
+        
+        <div class="pickdiv" ng-repeat="n in topNewsWithImages">
+          <div class="pickthumb"><a href="/slideshow/{% verbatim %}{{ n.id }}{% endverbatim %}"><img ng-src="http://img1.contentapi.ws/{% verbatim %}{{ n.value.thumbnail }}{% endverbatim %}"/></a></div>
+          <div class="picdec">
+           <a href="/slideshow/{% verbatim %}{{ n.id }}{% endverbatim %}">{% verbatim %}{{ n.value.title }}{% endverbatim %}</a>
+           -- {% verbatim %}{{ n.value.uploadedDate }}{% endverbatim %} </div>
+        </div>
+        <!-- pickdiv end -->
+
+      </div>
+      <!-- SportsPictures end -->
+      <div class="SportsPictures margin20_T">
+        <div class="blue-title"><span class="title-left-bg"></span>LEFT FIELD</div>
+        <div class="FieldLeft">
+          <p>Manchester United likely to show patience with David Moyes…for now</p>
+          <p>Manchester United likely to show patience with David Moyes…for now</p>
+          <p>Manchester United likely to show patience with David Moyes…for now</p>
+          <p>Manchester United likely to show patience with David Moyes…for now</p>
+          <p>Manchester United likely to show patience with David Moyes…for now</p>
+          <a href="#" class="more-fields">More from Left Field</a> </div>
+        <!-- FieldLeft end -->
+        <div class="rightad2"><img src="/images/ad-160x600.jpg" alt=""></div>
+        <span class="clear"></span> </div>
+      <!-- SportsPictures end -->
+      <div class="rightad margin20_T"><img src="/images/right-ad2.jpg" width="300" height="250" alt=""></div>
+    </aside>
+    <span class="clear"></span>
+    <div class="ad1 margin20_T"><img src="/images/ad1.jpg" alt=""></div>
+  </section>
+  <!-- contentarea end -->
+  <footer> <span class="copy left margin5_T">Copyright &copy; {% verbatim %}{{currentYear}}{% endverbatim %} Sports News, All rights reserved.</span> <span class="followuson right"> <span class="left margin5_T">Follow Us on:</span> <a href="#"><img src="/images/f-share.png" alt=""></a> <a href="#"><img src="/images/t-share.png" alt=""></a> <a href="#"><img src="/images/in-share.png" alt=""></a> <a href="#"><img src="/images/g-share.png" alt=""></a></span> <span class="clear"></span> </footer>
+</div>
+<!-- container end -->
+</body>
+</html>

@@ -1,0 +1,14 @@
+<footer> 
+	<span class="copy left margin5_T">
+		Copyright &copy; {% now "Y" %} r5b, All rights reserved. | 
+		<a href=/termsandconditions>Terms & Conditions</a>
+	</span> 
+	<!--<span class="followuson right"> 
+		<span class="left margin5_T">Follow Us on:</span> 
+		<a href="#"><img src="images/f-share.png" alt=""></a> 
+		<a href="#"><img src="images/t-share.png" alt=""></a> 
+		<a href="#"><img src="images/in-share.png" alt=""></a> 
+		<a href="#"><img src="images/g-share.png" alt=""></a>
+	</span>--> 
+	<span class="clear"></span> 
+</footer>

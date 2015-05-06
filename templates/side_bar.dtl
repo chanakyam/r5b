@@ -1,0 +1,34 @@
+<aside class="sidebar shadowbg">
+  <div class="rightad">
+    <script  src="http://tag.contextweb.com/TagPublish/getjs.aspx?action=VIEWAD&cwrun=200&cwadformat=300X250&cwpid=552062&cwwidth=300&cwheight=250&cwpnet=1&cwtagid=178291">
+    </script>
+  </div>
+  <div class="SportsPictures margin20_T">
+    <div class="blue-title"><span class="title-left-bg"></span>Sports News</div>
+    {% for n in topNewsWithImages %}
+      <div class="pickdiv">
+        <div class="pickthumb">
+          <a href="/n/{{ n.id }}">
+          {% if n.thumb_image %}
+              <img src="http://img1.contentapi.ws/{{ n.thumb_image }}"/>
+              {% else %}
+              <img src="/images/noimage.jpg"/>
+              {% endif %}
+          </a>
+
+        </div>
+        <div class="picdec ng-binding">
+          <a class="ng-binding" href="/n/{{ n.id }}">{{n.title}}</a>
+          <div> {{ n.upload_date }}</div>
+        </div>
+      </div>
+    {% endfor %}
+    <div><a href="/moresportsnews?c=text_us_sports&p=1" class="more">More Sports News</a></div>
+    <!-- pickdiv end -->
+  </div>
+  <!-- SportsPictures end -->
+  <div class="rightad margin20_T">
+    <script  src="http://tag.contextweb.com/TagPublish/getjs.aspx?action=VIEWAD&cwrun=200&cwadformat=300X250&cwpid=552062&cwwidth=300&cwheight=250&cwpnet=1&cwtagid=178291">
+    </script>
+  </div>
+</aside>
