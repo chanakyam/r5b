@@ -10,7 +10,7 @@
         <div class="pickthumb">
           <a href="/n/{{ n.id }}">
           {% if n.thumb_image %}
-              <img src="http://img1.contentapi.ws/{{ n.thumb_image }}"/>
+              <img src="http://newscdn.lycos.com/{{ n.thumb_image }}"/>
               {% else %}
               <img src="/images/noimage.jpg"/>
               {% endif %}

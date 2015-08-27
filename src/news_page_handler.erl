@@ -30,7 +30,7 @@ welcome(Req, State) ->
 	Res = string:sub_string(Response, 1, string:len(Response) -1 ),
 	Params = jsx:decode(list_to_binary(Res)),
 
-	Url_video = "http://api.contentapi.ws/videos?channel=us_mlb&limit=1&skip=3&format=long",
+	Url_video = "http://api.contentapi.ws/videos?channel=world_news&limit=1&skip=3&format=long",
 	% io:format("movies url: ~p~n",[Url]),
 	{ok, "200", _, Response_mlb} = ibrowse:send_req(Url_video,[],get,[],[]),
 	ResponseParams_mlb = jsx:decode(list_to_binary(Response_mlb)),	

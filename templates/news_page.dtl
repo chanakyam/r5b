@@ -70,7 +70,7 @@ font-style: italic;
         <div class="newsbody">
           <div class="news-title"><span class="title-left-bg"></span>{{ newsParam.title }}&nbsp;&nbsp;<span class="uploaded-date">-<script> document.write(epochToDate('{{ newsParam.uploaded_date }}')); </script></span></div>
        {% if newsParam.thumb_image %}
-            <img src="http://img1.contentapi.ws/{{ newsParam.thumb_image }}" style="width: 260px;float: left;margin: 5px 10px;" alt="">
+            <img src="http://newscdn.lycos.com/{{ newsParam.thumb_image }}" style="width: 260px;float: left;margin: 5px 10px;" alt="">
       {% endif %}
     {{ newsParam.news_body }}
     {% if newsParam.linked_text_articles %}
@@ -98,7 +98,7 @@ font-style: italic;
         {% for n in topNhlNews %}
           <div class="Rnewsdiv" style="height: 100px;">
             <a href="/n/{{ n.id }}">
-              <img style="float: left;margin-right: 10px;" src="http://img1.contentapi.ws/{{ n.thumb_image }}"/>
+              <img style="float: left;margin-right: 10px;" src="http://newscdn.lycos.com/{{ n.thumb_image }}"/>
             </a>
             <a href="/n/{{ n.id }}"><h4>{{ n.title }}</h4></a>
             <div class="hiddden_news_body" bind-html-unsafe="n.value.newsbody"></div>

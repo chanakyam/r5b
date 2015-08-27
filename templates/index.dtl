@@ -77,7 +77,7 @@ function trimbodies(){
             <a href="/n/{{ n.id }}">
               <!-- <img style="float: left;margin-right: 10px;" src="http://img1.contentapi.ws/{{ n.thumb_image }}"/> -->
               {% if n.thumb_image %}
-              <img style="float: left;margin-right: 10px;" src="http://img1.contentapi.ws/{{ n.thumb_image }}"/>
+              <img style="float: left;margin-right: 10px;" src="http://newscdn.lycos.com/{{ n.thumb_image }}"/>
               {% else %}
               <img style="float: left;margin-right: 10px;" src="/images/noimage.jpg"/>
               {% endif %}

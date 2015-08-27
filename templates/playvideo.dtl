@@ -51,6 +51,17 @@
         <div class="module-inner">      	  
          <!-- <div id="playVideo">Loading the player...</div>  -->
          <div class="inner-content">{{newsParam.description}}</div>
+         <div class="module-inner">
+            {% for n in allnews %}
+             <div class="videow-colum" >
+               <a href="/playvideo/{{ n.id }}" title="{{ n.title }}">
+               <div class="video-thumb"><img src="http://newscdn.lycos.com/world_news/{{n.thumb_image}}"></div>
+               <p>{{n.title}} - {{n.upload_date}}</p>               
+               <span class="play"></span>
+               </a>
+             </div>
+            {% endfor %}          
+          </div>
           </div>
       </div>
 	 

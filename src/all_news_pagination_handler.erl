@@ -58,31 +58,31 @@ welcome(Req, State) ->
 
 	end,
 
-	Url_video = case Category of 
-		"text_us_sports" ->
-			%Category = "US",
-			"http://api.contentapi.ws/videos?channel=us_mlb&limit=1&skip=1&format=long";
-		% "text_top_us_sports" ->
-		% 	%Category = "US",
-		% 	"http://api.contentapi.ws/news?channel=us_sports&limit=3&skip=0&format=short";
-		"text_us_nba" ->
-			%Category = "US",
-			"http://api.contentapi.ws/videos?channel=us_mlb&limit=1&skip=6&format=long";
+	% Url_video = case Category of 
+	% 	"text_us_sports" ->
+	% 		%Category = "US",
+	% 		"http://api.contentapi.ws/videos?channel=us_mlb&limit=1&skip=1&format=long";
+	% 	% "text_top_us_sports" ->
+	% 	% 	%Category = "US",
+	% 	% 	"http://api.contentapi.ws/news?channel=us_sports&limit=3&skip=0&format=short";
+	% 	"text_us_nba" ->
+	% 		%Category = "US",
+	% 		"http://api.contentapi.ws/videos?channel=us_mlb&limit=1&skip=6&format=long";
 			
-		"text_us_nfl" ->
-			%Category = "Politics",
-			"http://api.contentapi.ws/videos?channel=us_mlb&limit=1&skip=7&format=long";
+	% 	"text_us_nfl" ->
+	% 		%Category = "Politics",
+	% 		"http://api.contentapi.ws/videos?channel=us_mlb&limit=1&skip=7&format=long";
 			
-		"text_us_nhl" ->
-			%Category = "Entertainment",
-			"http://api.contentapi.ws/videos?channel=us_mlb&limit=1&skip=8&format=long";
+	% 	"text_us_nhl" ->
+	% 		%Category = "Entertainment",
+	% 		"http://api.contentapi.ws/videos?channel=us_mlb&limit=1&skip=8&format=long";
 		
 		
-		_ ->
-			%Category = "None",
-			lager:info("#########################None")
+	% 	_ ->
+	% 		%Category = "None",
+	% 		lager:info("#########################None")
 
-	end,
+	% end,
 
 
 	{ok, "200", _, ResponseAllNews} = ibrowse:send_req(Url,[],get,[],[]),
@@ -91,7 +91,7 @@ welcome(Req, State) ->
 	ResAllNews = proplists:get_value(<<"articles">>, ResponseParams),
 
 
-	% Url_video = "http://api.contentapi.ws/videos?channel=us_mlb&limit=1&skip=1&format=long",
+	Url_video = "http://api.contentapi.ws/videos?channel=world_news&limit=1&skip=1&format=long",
 	% io:format("movies url: ~p~n",[Url]),
 	{ok, "200", _, Response_mlb} = ibrowse:send_req(Url_video,[],get,[],[]),
 	ResponseParams_mlb = jsx:decode(list_to_binary(Response_mlb)),	
